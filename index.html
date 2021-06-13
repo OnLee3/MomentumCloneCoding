@@ -4,33 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css" />
     <title>Momentum App</title>
   </head>
   <body>
     <form class="hidden" id="login-form">
       <input
-        required
-        maxlength="15"
-        type="text"
-        placeholder="What is your name?"
+      onfocus="this.placeholder=''" onblur="this.placeholder='What is your name?'"
+      required
+      maxlength="15"
+      type="text"
+      placeholder="What is your name?"
       />
-      <button>Log In</button>
     </form>
-    <h2 id="clock">00:00:00</h2>
+    <div class="clockGreetingGroup">
+    <h1 id="clock" class="hidden">00:00:00</h2>
     <h1 id="greeting" class="hidden"></h1>
-    <form id="todo-form">
-      <input type="text" placeholder="Write a To Do and Press Enter" required />
+  </div>
+    <form id="todo-form" class="hidden">
+      <input type="text" maxlength="24" onfocus="this.placeholder=''" onblur="this.placeholder='What is your main focus today?'"placeholder="What is your main focus today?" required />
     </form>
     <ul id="todo-list"></ul>
     <div id="quote">
       <span></span>
       <span></span>
     </div>
+    <div id="weather"><span></span><span></span></div>
     <script src="js/greeting.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/quotes.js"></script>
     <script src="js/background.js"></script>
     <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+    <script
+    src="https://kit.fontawesome.com/eff385dc2c.js"
+    crossorigin="anonymous"
+  ></script>
   </body>
 </html>

@@ -1,3 +1,145 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
 .hidden {
   display: none;
+}
+
+h1#clock {
+  color: white;
+  text-shadow: rgb(119, 119, 119) 1px 0 10px;
+  font-size: 200px;
+  font-weight: 800;
+}
+
+h1#greeting {
+  color: white;
+  text-shadow: rgb(119, 119, 119) 1px 0 10px;
+  opacity: 0.8;
+  font-size: 80px;
+  font-weight: 800;
+}
+
+body {
+  margin-top: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.clockGreetingGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+input {
+  margin: 10px 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  background-color: unset;
+  width: 600px;
+  height: 50px;
+  font-size: 40px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 1%;
+}
+
+@keyframes floatIcon {
+  0% {
+    transform: none;
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes floatQuote {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: translateY(25px);
+  }
+}
+
+li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  color: white;
+  text-shadow: rgb(119, 119, 119) 1px 0 10px;
+  font-size: 40px;
+  margin-bottom: 7%;
+}
+li i {
+  position: absolute;
+  right: -10px;
+  color: tomato;
+}
+
+i:hover {
+  animation: floatIcon 1s ease-in-out infinite;
+}
+
+div#quote,
+div#weather {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-shadow: rgb(119, 119, 119) 1px 0 5px;
+}
+
+div#quote {
+  font-size: 20px;
+  bottom: 10%;
+}
+div#weather {
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+  top: 3%;
+  right: 3%;
+  text-shadow: rgb(119, 119, 119) 1px 0 2px;
+}
+
+div#quote span:last-child {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  animation: floatQuote 1s ease-in-out forwards;
+}
+
+div#quote span:last-child:hover {
+  opacity: 1;
 }
