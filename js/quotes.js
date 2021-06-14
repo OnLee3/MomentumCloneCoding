@@ -54,3 +54,11 @@ const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 // 내부텍스트를 변경해준다. Object 형태로 받았으므로, 글인지 작가인지에 따라 알맞게 property도 지정해준다.
 quote.innerText = todaysQuote.quote;
 author.innerText = todaysQuote.author;
+quote.classList.add(FADEINANI__INIT);
+setTimeout(function () {
+    quote.classList.add(FADEINANI__FIN);
+}, 1000)
+author.classList.add(FADEINANI__INIT);
+setTimeout(function () {
+    author.classList.add(FADEINANI__FIN);
+}, 1000)

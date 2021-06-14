@@ -1,4 +1,5 @@
 const API_KEY="ed878c4c12458724e9bfb0c3b163ce3a";
+const weatherBox = document.querySelector("#weather");
 
 function onGeoOk(position){
     const lat = position.coords.latitude;
@@ -12,6 +13,10 @@ function onGeoOk(position){
         const city = document.querySelector("#weather span:last-child");
         weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
         city.innerText = data.name;
+        weatherBox.classList.add(FADEINANI__INIT);
+        setTimeout(function () {
+            weatherBox.classList.add(FADEINANI__FIN);
+        }, 30)
     });
 }
 function onGeoError(){

@@ -8,10 +8,10 @@ let toDos = [];
 
 function saveToDos(){
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-    if(toDos.length >= 5){
+    if(toDos.length >= 3){
         toDoForm.className="hidden";
     }
-    else if(toDos.length < 5 ){
+    else if(toDos.length < 3 ){
         toDoForm.classList.remove("hidden");
     }
 }
@@ -34,6 +34,10 @@ function paintToDo(newToDo){
     li.appendChild(span);
     li.appendChild(button);
     toDoList.appendChild(li);
+    li.classList.add(FADEINANI__INIT);
+    setTimeout(function () {
+        li.classList.add(FADEINANI__FIN);
+    }, 30)
 }
 
 function handleToDoSubmit(event){
@@ -58,7 +62,7 @@ if(savedToDos !== null){
     parsedToDos.forEach((item) => paintToDo(item));
 }
 
-if(toDos.length < 5){
+if(toDos.length < 3){
     toDoForm.addEventListener("submit", handleToDoSubmit);
 }
 else{
