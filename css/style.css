@@ -1,3 +1,4 @@
+/* entire Document */
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -7,23 +8,26 @@
   display: none;
 }
 
-h1#clock {
-  color: white;
-  text-shadow: rgb(119, 119, 119) 1px 0 10px;
-  font-size: 200px;
-  font-weight: 800;
+.fadeinInit {
+  opacity: 0;
 }
 
-h1#greeting {
-  color: white;
-  text-shadow: rgb(119, 119, 119) 1px 0 10px;
-  opacity: 0.8;
-  font-size: 80px;
-  font-weight: 800;
+.fadeinFin {
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+}
+
+.fadeOutInit {
+  opacity: 1;
+}
+
+.fadeOutFin {
+  opacity: 0;
+  transition: 0.2s ease-in-out;
 }
 
 body {
-  margin-top: 13%;
+  margin-top: 12%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,14 +44,32 @@ img {
   height: 100%;
 }
 
+#login-form {
+  position: absolute;
+  top: 40%;
+}
+
+/* clock and Greeting */
 .clockGreetingGroup {
+  color: white;
+  text-shadow: rgb(119, 119, 119) 1px 0 5px;
+  font-weight: 800;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 
+h1#clock {
+  font-size: 200px;
+}
+
+h1#greeting {
+  font-size: 80px;
+}
+
+/* input */
 input {
   margin: 10px 0px;
   border-top: none;
@@ -58,16 +80,15 @@ input {
   width: 600px;
   height: 50px;
   font-size: 40px;
+  color: white;
 }
 
-ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 1%;
+::placeholder {
+  color: white;
+  text-shadow: rgb(119, 119, 119) 1px 0 3px;
 }
 
+/* toDo List */
 @keyframes floatIcon {
   0% {
     transform: none;
@@ -80,13 +101,10 @@ ul {
   }
 }
 
-@keyframes floatQuote {
-  0% {
-    transform: none;
-  }
-  100% {
-    transform: translateY(25px);
-  }
+ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1%;
 }
 
 li {
@@ -95,15 +113,14 @@ li {
   justify-content: center;
   align-items: center;
   width: 500px;
-  color: white;
-  text-shadow: rgb(119, 119, 119) 1px 0 10px;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(119, 119, 119) 1px 0 5px;
   font-size: 40px;
   margin-bottom: 7%;
 }
 li i {
   position: absolute;
   right: -10px;
-  color: tomato;
 }
 
 i:hover {
@@ -117,29 +134,18 @@ div#weather {
   flex-direction: column;
   align-items: center;
   color: white;
+  font-size: 20px;
   text-shadow: rgb(119, 119, 119) 1px 0 5px;
 }
 
+/* quote and weather */
+
 div#quote {
-  font-size: 20px;
   bottom: 10%;
 }
 div#weather {
-  color: black;
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 25px;
   top: 3%;
   right: 3%;
-  text-shadow: rgb(119, 119, 119) 1px 0 2px;
-}
-
-div#quote span:last-child {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  animation: floatQuote 1s ease-in-out forwards;
-}
-
-div#quote span:last-child:hover {
-  opacity: 1;
+  text-shadow: rgb(119, 119, 119) 1px 0 5px;
 }
