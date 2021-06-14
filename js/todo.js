@@ -8,11 +8,11 @@ let toDos = [];
 
 function saveToDos(){
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-    if(toDos.length >= 5){
-        toDoForm.className="hidden";
+    if(toDos.length >= 3){
+        toDoForm.className=HIDDEN_CLASSNAME;
     }
-    else if(toDos.length < 5 ){
-        toDoForm.classList.remove("hidden");
+    else if(toDos.length === 0 ){
+        toDoForm.classList.remove(HIDDEN_CLASSNAME);
     }
 }
 
@@ -23,6 +23,19 @@ function deleteToDo(event){
    saveToDos(); 
 }
 
+function liFadeIn(event){
+    event.target.childNodes[1].classList.remove(FADEOUTANI__FIN);
+    event.target.childNodes[1].classList.remove(FADEOUTANI__FIN);
+   event.target.childNodes[1].classList.add(FADEINANI__FIN);
+}
+function liFadeOut(event){
+   event.target.childNodes[1].classList.remove(FADEINANI__FIN);
+   event.target.childNodes[1].classList.add(FADEOUTANI__INIT);
+   setTimeout(function () {
+   event.target.childNodes[1].classList.add(FADEOUTANI__FIN);
+    }, 30)
+}
+
 function paintToDo(newToDo){
     const li = document.createElement("li");
     li.id = newToDo.id;
@@ -31,9 +44,16 @@ function paintToDo(newToDo){
     const button = document.createElement("i");
     button.className = "fas fa-times";
     button.addEventListener("click", deleteToDo);
+    button.classList.add(FADEINANI__INIT);
     li.appendChild(span);
     li.appendChild(button);
     toDoList.appendChild(li);
+    li.classList.add(FADEINANI__INIT);
+    setTimeout(function () {
+        li.classList.add(FADEINANI__FIN);
+    }, 30)
+    li.addEventListener("mouseenter", liFadeIn);
+    li.addEventListener("mouseleave", liFadeOut);
 }
 
 function handleToDoSubmit(event){
@@ -58,9 +78,9 @@ if(savedToDos !== null){
     parsedToDos.forEach((item) => paintToDo(item));
 }
 
-if(toDos.length < 5){
+if(toDos.length < 3){
     toDoForm.addEventListener("submit", handleToDoSubmit);
 }
 else{
-    toDoForm.className="hidden";
+    toDoForm.className=HIDDEN_CLASSNAME;
 }

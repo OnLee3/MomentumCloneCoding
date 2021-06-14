@@ -43,6 +43,7 @@ const quotes = [
 },
 ]
 // 변수 선언
+const quoteBox = document.querySelector("#quote");
 const quote = document.querySelector("#quote span:first-child"); 
 const author = document.querySelector("#quote span:last-child"); 
 // quotes[number] 형태로 입력한 number에 맞는 순서를 가진 Object를 Array에서 가져올 수 있다.
@@ -54,3 +55,24 @@ const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 // 내부텍스트를 변경해준다. Object 형태로 받았으므로, 글인지 작가인지에 따라 알맞게 property도 지정해준다.
 quote.innerText = todaysQuote.quote;
 author.innerText = todaysQuote.author;
+quote.classList.add(FADEINANI__INIT);
+setTimeout(function () {
+    quote.classList.add(FADEINANI__FIN);
+}, 1000)
+author.classList.add(FADEINANI__INIT);
+
+function authorFadeIn(e){
+    e.target.childNodes[3].classList.remove(FADEOUTANI__INIT);
+    e.target.childNodes[3].classList.remove(FADEOUTANI__FIN);
+    e.target.childNodes[3].classList.add(FADEINANI__FIN);
+}
+function authorFadeOut(e){
+    e.target.childNodes[3].classList.remove(FADEINANI__FIN);
+    e.target.childNodes[3].classList.add(FADEOUTANI__INIT);
+    setTimeout(function () {
+    e.target.childNodes[3].classList.add(FADEOUTANI__FIN)}
+    ,30);
+}
+
+quoteBox.addEventListener("mouseenter", authorFadeIn);
+quoteBox.addEventListener("mouseleave", authorFadeOut);
