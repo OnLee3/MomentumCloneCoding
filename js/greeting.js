@@ -4,6 +4,7 @@ const greeting = document.querySelector("div #greeting");
 const clockForm = document.querySelector("#clock");
 const todoForm = document.querySelector("#todo-form");
 const clockGreetingBox = document.querySelector(".clockGreetingGroup");
+
 const FADEINANI__INIT = "fadeinInit";
 const FADEINANI__FIN = "fadeinFin";
 const FADEOUTANI__INIT = "fadeOutInit";
@@ -24,13 +25,19 @@ setTimeout(function () {
     clockForm.classList.remove(HIDDEN_CLASSNAME);
     const username = loginInput.value;
     localStorage.setItem(USERNAME_KEY, username)
-    paintGreetings(username);}, 800)
+    paintGreetings(username);
+}, 800)
 }
+
 function paintGreetings(username){
     greeting.innerText = `Hi, ${username}`;
     clockGreetingBox.classList.add(FADEINANI__INIT);
+    todoForm.classList.add(FADEINANI__INIT);
     setTimeout(function () {
         clockGreetingBox.classList.add(FADEINANI__FIN);
+    }, 1000);
+    setTimeout(function () {
+        toDoForm.classList.add(FADEINANI__FIN);
     }, 1000);
 }
 
@@ -41,10 +48,7 @@ if(savedUsername === null){
     loginForm.addEventListener("submit", onLoginSubmit);
 }
 else {
-    paintGreetings(savedUsername);
-}
-
-if(localStorage.getItem(USERNAME_KEY) !== null){
     clockForm.classList.remove(HIDDEN_CLASSNAME);
     todoForm.classList.remove(HIDDEN_CLASSNAME);
+    paintGreetings(savedUsername);
 }

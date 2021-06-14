@@ -43,6 +43,7 @@ const quotes = [
 },
 ]
 // 변수 선언
+const quoteBox = document.querySelector("#quote");
 const quote = document.querySelector("#quote span:first-child"); 
 const author = document.querySelector("#quote span:last-child"); 
 // quotes[number] 형태로 입력한 number에 맞는 순서를 가진 Object를 Array에서 가져올 수 있다.
@@ -59,6 +60,19 @@ setTimeout(function () {
     quote.classList.add(FADEINANI__FIN);
 }, 1000)
 author.classList.add(FADEINANI__INIT);
-setTimeout(function () {
-    author.classList.add(FADEINANI__FIN);
-}, 1000)
+
+function authorFadeIn(e){
+    e.target.childNodes[3].classList.remove(FADEOUTANI__INIT);
+    e.target.childNodes[3].classList.remove(FADEOUTANI__FIN);
+    e.target.childNodes[3].classList.add(FADEINANI__FIN);
+}
+function authorFadeOut(e){
+    e.target.childNodes[3].classList.remove(FADEINANI__FIN);
+    e.target.childNodes[3].classList.add(FADEOUTANI__INIT);
+    setTimeout(function () {
+    e.target.childNodes[3].classList.add(FADEOUTANI__FIN)}
+    ,30);
+}
+
+quoteBox.addEventListener("mouseenter", authorFadeIn);
+quoteBox.addEventListener("mouseleave", authorFadeOut);

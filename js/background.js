@@ -1,6 +1,6 @@
 // 이미지 제목을 그대로 적어준다.
 const images = [
-    "1.png",
+    "1.jpg",
     "2.jpg",
     "3.jpeg"
 ];
