@@ -13,6 +13,7 @@ function saveToDos(){
     }
     else if(toDos.length === 0 ){
         toDoForm.classList.remove(HIDDEN_CLASSNAME);
+        toDoForm.addEventListener("submit", handleToDoSubmit);
     }
 }
 

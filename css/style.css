@@ -125,6 +125,7 @@ li i {
 
 i:hover {
   animation: floatIcon 1s ease-in-out infinite;
+  cursor: pointer;
 }
 
 div#quote,
