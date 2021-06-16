@@ -46,7 +46,7 @@ const quotes = [
 const quoteBox = document.querySelector("#quote");
 const quote = document.querySelector("#quote span:first-child"); 
 const author = document.querySelector("#quote span:last-child"); 
-// quotes[number] 형태로 입력한 number에 맞는 순서를 가진 Object를 Array에서 가져올 수 있다.
+// quotes[number] : 입력한 number의 순서를 가진 Object를 Array에서 가져올 수 있다.
 // 무작위로 가져오는게 목적이므로, Math.random()을 이용해 0~1 시아의 무작위 float를 생성하고, 명언개수에 맞추어 숫자를 곱해준다.
 // 이 경우 quotes.length를 사용하여 object 개수를 파악해준다. 결과적으로 명언의 개수가 10개이므로 10을 곱하게 된다.
 // 그 후 float 형태 (x.xxxxxx)이므로 floor로 숫자를 내림으로써 Integer 형태로 만들어준다.
@@ -55,6 +55,8 @@ const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 // 내부텍스트를 변경해준다. Object 형태로 받았으므로, 글인지 작가인지에 따라 알맞게 property도 지정해준다.
 quote.innerText = todaysQuote.quote;
 author.innerText = todaysQuote.author;
+
+// FadeIn, FadeOut 효과들
 quote.classList.add(FADEINANI__INIT);
 setTimeout(function () {
     quote.classList.add(FADEINANI__FIN);

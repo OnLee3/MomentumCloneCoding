@@ -13,6 +13,7 @@ function onGeoOk(position){
         const city = document.querySelector("#weather span:last-child");
         weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
         city.innerText = data.name;
+        //Fade In 효과
         weatherBox.classList.add(FADEINANI__INIT);
         setTimeout(function () {
             weatherBox.classList.add(FADEINANI__FIN);

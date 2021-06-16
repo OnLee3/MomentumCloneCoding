@@ -8,6 +8,7 @@ let toDos = [];
 
 function saveToDos(){
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+    // 항목 3개이상이면 입력막고, 0개가 됬을때 다시 input 활성화 하는 역할.
     if(toDos.length >= 3){
         toDoForm.className=HIDDEN_CLASSNAME;
     }
@@ -20,12 +21,14 @@ function saveToDos(){
 function deleteToDo(event){
     const li = event.target.parentElement;
     li.remove()
+    // toDos Array 안의 각 인자를 item에 대입하여, li.id 와 같지 않을 경우에만 true를 return 하게 된다.
+    // 즉 선택한 값만 비워둔채로 새로운 Array를 저장한다.
    toDos = toDos.filter(item => item.id !== parseInt(li.id));
    saveToDos(); 
 }
 
 function liFadeIn(event){
-    event.target.childNodes[1].classList.remove(FADEOUTANI__FIN);
+    event.target.childNodes[1].classList.remove(FADEOUTANI__INIT);
     event.target.childNodes[1].classList.remove(FADEOUTANI__FIN);
    event.target.childNodes[1].classList.add(FADEINANI__FIN);
 }
@@ -70,6 +73,7 @@ function handleToDoSubmit(event){
     saveToDos();
 }
 
+// 새로고침시, 기존 데이터가 있으면 불러오는 역할.
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if(savedToDos !== null){
@@ -79,6 +83,7 @@ if(savedToDos !== null){
     parsedToDos.forEach((item) => paintToDo(item));
 }
 
+// 새로고침시, 항목3개 이상이면 input 활성화 막는 역할.
 if(toDos.length < 3){
     toDoForm.addEventListener("submit", handleToDoSubmit);
 }
